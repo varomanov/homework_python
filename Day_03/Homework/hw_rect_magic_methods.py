@@ -10,9 +10,12 @@ class Rect:
         return f'Value width is {self.width}, value height in {self.height}'
 
     def __mul__(self, other):
-        if isinstance(other, (int, float)):
-            self.width *= other
-            self.height *= other
+        try:
+            if isinstance(other, (int, float)):
+                self.width *= other
+                self.height *= other
+        except:
+            ValueError
 
     def get_area(self):
         return self.width * self.height
@@ -36,8 +39,10 @@ class Rect:
         return self.get_area() != Rect.get_area(other)
 
 
-r1 = Rect(9, 23)
+r1 = Rect(2, 23)
 r2 = Rect(23, 10)
+r1 * 5
+print(r1)
 print(r1 < r2)
 print(r1 > r2)
 print(r1 <= r2)
